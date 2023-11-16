@@ -1,10 +1,14 @@
-@import "~xp.css/dist/XP.css";
-
-.color {
-    width: 20px;
-    height: 20px;
-}
+@import '~xp.css/dist/XP.css';
 
 .window-body {
-    display: flex;
+  display: flex;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
