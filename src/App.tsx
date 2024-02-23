@@ -1,10 +1,10 @@
 import React from 'react'
+import './index.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { currentStrokeSelector } from './modules/currentStroke/selectors'
 import { beginStroke, updateStroke } from './modules/currentStroke/slice'
 import { endStroke } from './modules/sharedAction'
 import { drawStroke } from './canvasUtils'
-import './index.css'
 import { ColorPanel } from './ColorPanel'
 import { EditPanel } from './EditPanel'
 import { useCanvas } from './CanvasContext'
@@ -18,6 +18,9 @@ function App() {
 
   const historyIndex = useSelector(historyIndexSelector)
   const dispatch = useDispatch()
+
+  let canvasWidth = Number(document.documentElement.clientWidth)
+  let canvasHeight = Number(document.documentElement.clientHeight)
 
   const getCanvasWithConstext = (canvas = canvasRef.current) => {
     return { canvas, context: canvas?.getContext('2d') }
@@ -52,9 +55,6 @@ function App() {
       drawStroke(context, currentStroke.points, currentStroke.color)
     })
   }
-
-  let canvasWidth = Number(document.documentElement.clientWidth)
-  let canvasHeight = Number(document.documentElement.clientHeight)
 
   return (
     <>
