@@ -1,7 +1,16 @@
-import { Point } from './types'
+import { Point } from '../types'
 
-export const drawStroke = (context: CanvasRenderingContext2D, points: Point[], color: string) => {
+export const drawStroke = (
+  context: CanvasRenderingContext2D,
+  points: Point[],
+  color: string,
+  width: number
+) => {
   if (!points.length) return
+  context.lineCap = 'round'
+  context.lineJoin = 'round'
+  context.miterLimit = 0
+  context.lineWidth = width
   context.strokeStyle = color
   context.beginPath()
   context.moveTo(points[0].x, points[0].y)
