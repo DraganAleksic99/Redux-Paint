@@ -4,11 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { currentStrokeSelector } from './modules/currentStroke/selectors'
 import { beginStroke, updateStroke } from './modules/currentStroke/slice'
 import { endStroke } from './modules/sharedAction'
-import { drawStroke } from './canvasUtils'
-import { ColorPanel } from './ColorPanel'
-import { EditPanel } from './EditPanel'
+import { drawStroke } from './utils/canvasUtils'
+import Menu from './components/Menu'
 import { useCanvas } from './CanvasContext'
-import { FilePanel } from './shared/FilePanel'
 import { historyIndexSelector } from './modules/historyIndex/selectors'
 
 function App() {
@@ -52,17 +50,13 @@ function App() {
     }
 
     requestAnimationFrame(() => {
-      drawStroke(context, currentStroke.points, currentStroke.color)
+      drawStroke(context, currentStroke.points, currentStroke.color, currentStroke.width)
     })
   }
 
   return (
-    <>
-      <div style={{ display: 'flex', gap: '2px' }}>
-        <EditPanel />
-        <ColorPanel />
-        <FilePanel />
-      </div>
+    <div style={{ position: 'relative', cursor: 'crosshair'}}>
+      <Menu />
       <canvas
         ref={canvasRef}
         width={canvasWidth}
@@ -72,7 +66,7 @@ function App() {
         onMouseOut={endDrawing}
         onMouseMove={draw}
       />
-    </>
+    </div>
   )
 }
 

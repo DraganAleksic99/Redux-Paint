@@ -4,7 +4,8 @@ import { endStroke } from '../sharedAction'
 
 const initialState: RootState['currentStroke'] = {
   points: [],
-  color: '#000'
+  color: '#000',
+  width: 5
 }
 
 const slice = createSlice({
@@ -19,6 +20,9 @@ const slice = createSlice({
     },
     setStrokeColor: (state, action: PayloadAction<string>) => {
       state.color = action.payload
+    },
+    setStrokeWidth: (state, action: PayloadAction<number>) => {
+      state.width = Number(action.payload)
     }
   },
   extraReducers: builder => {
@@ -29,4 +33,4 @@ const slice = createSlice({
 })
 
 export default slice.reducer
-export const { beginStroke, updateStroke, setStrokeColor } = slice.actions
+export const { beginStroke, updateStroke, setStrokeColor, setStrokeWidth } = slice.actions
