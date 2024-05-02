@@ -5,7 +5,7 @@ Redux-paint is a drawing board. You can pick different colors and draw lines. If
 # Installation
 
 ## Clone this repository
-git clone https://github.com/DraganAleksic99/Redux-Paint.git
+git clone https://github.com/DraganAleksic99/Redux-Paint.git  
 cd Redux-Paint
 
 ## Install dependencies
